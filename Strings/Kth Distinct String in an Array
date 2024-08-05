@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string kthDistinct(vector<string>& arr, int k) {
+    unordered_map<string, int> count;
+    vector<string> distinct;
+    for (string& str : arr) {
+        count[str]++;
+    }
+    for (string& str : arr) {
+        if (count[str] == 1) {
+            distinct.push_back(str);
+        }
+    }
+
+    if (distinct.size() < k) {
+        return "";
+    }
+    return distinct[k - 1];    }
+};          
+
+
