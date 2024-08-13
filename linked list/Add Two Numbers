@@ -45,17 +45,4 @@ ListNode* createLinkedList(const vector<int>& values) {
     }
     return dummy_head->next;
 }
-
-// Helper function to print a linked list
-void printLinkedList(ListNode* head) {
-    while (head != nullptr) {
-        cout << head->val;
-        if (head->next != nullptr) {
-            cout << " -> ";
-        }
-        head = head->next;
-    }
-    cout << endl;
-
-    }
 };
