@@ -1,0 +1,33 @@
+Best approach:
+
+class Solution {
+    public String reverseWords(String s) {
+       char[] c = s.toCharArray();
+       char[] r = new char[c.length];
+
+       int ri = findAndCopy(c, r, 0, 0);
+
+       return new String(r, 0, ri);
+    }
+
+    private int findAndCopy(char[] c, char[] r, int i, int ri){
+        while(i < c.length && c[i] == ' ') i++;
+        int e = i;
+        while(e < c.length && c[e] != ' ') e++;
+
+        if(e == i) return ri;
+
+        ri = findAndCopy(c, r, e + 1, ri);
+
+        if(ri > 0) {
+            r[ri] = ' ';
+            ri++;
+        }
+
+        for(int j = i; j < e; j++){
+            r[ri++] = c[j];
+        }
+
+        return ri;
+    }
+}
