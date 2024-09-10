@@ -1,0 +1,25 @@
+class Solution {
+public:
+    ListNode* insertGreatestCommonDivisors(ListNode* head) {
+        if(head == NULL || head->next == NULL) return head;
+        ListNode *temp = head;
+        ListNode *agla = head->next;
+        while(agla){
+            int gcdV  =gcdE(temp->val,agla->val);
+            ListNode *gcdN  = new ListNode(gcdV);
+            temp->next = gcdN;
+            gcdN->next = agla;
+            temp = agla;
+            agla = agla->next;
+        }
+        return head;
+    }
+    int gcdE(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+};
