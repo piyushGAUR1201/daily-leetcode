@@ -1,6 +1,6 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
-    //     //If length of s and goal is not equal then it can't be converted to goal.
+    //     If length of s and goal is not equal then it can't be converted to goal.
         if(s.length()!=goal.length()) return false;
     //     // Now using String Builder to rotate through the string by repeatedly deleting the first character and appending it to the end of the string(i.e. Rotating) 
     //     StringBuilder sb = new StringBuilder(s);
