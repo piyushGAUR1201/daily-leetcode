@@ -1,0 +1,21 @@
+class Solution {
+    public int[] getMaximumXor(int[] nums, int maximumBit) {
+        int n = nums.length;
+        int xorr = nums[0];
+        //mask containing all set bits(111....)
+        int mask = (1 << maximumBit) - 1;
+        //total xor of the array
+        for (int i = 1; i < n; i++) {
+            xorr ^= nums[i];
+        }
+        //finding k repeatedly(which will be flip of xor of complete array calculated by xor of complete array and the mask)
+        //then to reduce the array we just have to xor the (all elements xor) and (nums[n-1-i] i.e. the last element of the array)
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) {
+            ans[i] = xorr ^ mask;
+            xorr ^= nums[n - 1 - i];
+        }
+        // ans contains all values of k
+        return ans;
+    }
+}
