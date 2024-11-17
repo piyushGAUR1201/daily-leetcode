@@ -1,0 +1,25 @@
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int sum =0; // to record sum of subarrray
+        int min = Integer.MAX_VALUE; // to record minimum length of any subarray (i-j+1)
+        int n = nums.length-1;
+        int j =0;
+        // for loop to iterate through all elements
+        for(int i =0; i<=n;i++){
+            sum+=nums[i];
+            // If sum is greater than target deleting the first element of subarray and selecting the minimum length of subarray
+            while(sum>=target){
+                min = Math.min(min, i-j+1);
+                sum-=nums[j];
+                j++; 
+            }
+        }
+        // if subarray exists:
+
+        if(min!=Integer.MAX_VALUE){
+            return min;
+        }
+        // else:
+        return 0;
+    }
+}
