@@ -1,0 +1,37 @@
+There can be more than one solutions:
+First:
+You can iterate from low to high and check if the number is even && sum(firsthalf) == sum(seconhalf) then increase count ->CODE:
+class Solution {
+    public static int digits(int n){
+        int temp = n;
+        int count =0;
+        while(temp>0){
+            temp/=10;
+            count++;
+        }
+        return count;
+    }
+    public int countSymmetricIntegers(int low, int high) {
+        int cnt =0;
+        for(int i =low;i<=high;i++){
+            int n = digits(i);
+            int tempo = i;
+            if(n%2==0){
+                int t = n/2;
+                int sum1 =0;
+                int sum2 =0;
+                while(t>0){
+                    sum1+=tempo%10;
+                    tempo/=10;
+                    t--;
+                }
+                while(tempo>0){
+                    sum2+=tempo%10;
+                    tempo/=10;
+                }
+            if(sum1 == sum2) cnt++;
+            }
+        }
+        return cnt;
+    }
+}
