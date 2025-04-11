@@ -9,7 +9,7 @@ class Solution {
             temp/=10;
             count++;
         }
-        return count;
+        return count; 
     }
     public int countSymmetricIntegers(int low, int high) {
         int cnt =0;
