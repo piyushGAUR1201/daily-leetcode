@@ -1,0 +1,37 @@
+This problem can be solved by finding the indexes of minimum and maximum element in the array and then
+finding minimum from the three options: 
+1. Deleting from the front untill both the elements are deleted
+2. Deleting from the back untill both the elements are deleted
+3. Deleting from front and back untill both the elements are deleted
+CODE:
+
+class Solution {
+    public int minimumDeletions(int[] nums) {
+        int mini = Integer.MAX_VALUE;
+        int maxi = Integer.MIN_VALUE;
+        int minidx =0;
+        int deletions =0;
+        int maxidx =0;
+        for(int i =0;i<nums.length;i++){
+            if(nums[i]<mini){
+                mini = nums[i];
+                minidx = i;
+            }
+            if(nums[i]>maxi){
+                maxi = nums[i];
+                maxidx = i;
+            }
+        }
+        if (minidx > maxidx) {
+            int temp = minidx;
+            minidx = maxidx;
+            maxidx = temp;
+        }
+        int n = nums.length;
+        int op1 = maxidx + 1;
+        int op2 = n - minidx;
+        int op3 = (minidx + 1) + (n - maxidx);
+
+        return Math.min(op1, Math.min(op2, op3));
+    }
+}
