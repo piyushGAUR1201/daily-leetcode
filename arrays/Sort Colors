@@ -1,0 +1,27 @@
+We need to sort the 0s, 1s, 2s :
+we can have 3 pointers start, end, a current pointer, If we get a "2" at curr pointer, we can swap it with end and end-- .If we get a "0" at curr, we can swap it with 
+start pointer and start++ and curr++;
+CODE:
+class Solution {
+    public void sortColors(int[] nums) {
+        int curr =0;
+        int start =0;
+        int end = nums.length-1;
+        for(curr=0;curr<=end;curr++){
+            if(nums[curr]== 2){
+                swap(curr,end, nums);
+                end--;
+                curr--;
+            } 
+            else if(nums[curr] ==0){
+                swap(curr, start, nums);
+                start++;
+            }
+        }
+    }
+    private static void swap(int i , int j, int[] nums){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
